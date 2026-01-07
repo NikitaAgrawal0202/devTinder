@@ -2,9 +2,21 @@ const express = require("express");
 
 const app = express();
 
-app.use("/test",(req, res) => {
-    res.send("Hello from /test");
-})
+app.get("/user",(req, res) => {
+    res.send({firstName: "Nikita", lastName: "Agrawal"});
+},
+(req, res) => {
+    console.log("This is second callback");
+    }
+    );
+
+app.post("/user",(req, res) => {
+    res.send("Post request received");
+});
+
+app.delete("/user",(req, res) => {
+    res.send("delete request received");
+});
 
 app.use("/user",(req, res) => {
     res.send("Hello from /user");
